@@ -303,6 +303,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     FFAppState().attempts = 0;
                     FFAppState().newWords = [];
                     safeSetState(() {});
+
+                    context.pushNamed('MainMenu');
                   },
                   text: 'Resetear lecciones',
                   options: FFButtonOptions(

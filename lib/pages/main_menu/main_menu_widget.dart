@@ -86,7 +86,7 @@ class _MainMenuWidgetState extends State<MainMenuWidget> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: Image.asset(
-                          'assets/images/depositphotos_664564782-stock-illustration-hand-drawn-ice-cream-cup-removebg-preview.png',
+                          'assets/images/puzzle.png',
                           fit: BoxFit.cover,
                         ),
                       ),

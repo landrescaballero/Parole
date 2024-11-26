@@ -83,21 +83,6 @@ class FFAppState extends ChangeNotifier {
           _exercises;
     });
     _safeInit(() {
-      _exerciseTesting = prefs
-              .getStringList('ff_exerciseTesting')
-              ?.map((x) {
-                try {
-                  return ExerciseListStruct.fromSerializableMap(jsonDecode(x));
-                } catch (e) {
-                  print("Can't decode persisted data type. Error: $e.");
-                  return null;
-                }
-              })
-              .withoutNulls
-              .toList() ??
-          _exerciseTesting;
-    });
-    _safeInit(() {
       if (prefs.containsKey('ff_currentExercise')) {
         try {
           final serializedData = prefs.getString('ff_currentExercise') ?? '{}';
@@ -361,47 +346,6 @@ class FFAppState extends ChangeNotifier {
     exercises.insert(index, value);
     prefs.setStringList(
         'ff_exercises', _exercises.map((x) => x.serialize()).toList());
-  }
-
-  List<ExerciseListStruct> _exerciseTesting = [];
-  List<ExerciseListStruct> get exerciseTesting => _exerciseTesting;
-  set exerciseTesting(List<ExerciseListStruct> value) {
-    _exerciseTesting = value;
-    prefs.setStringList(
-        'ff_exerciseTesting', value.map((x) => x.serialize()).toList());
-  }
-
-  void addToExerciseTesting(ExerciseListStruct value) {
-    exerciseTesting.add(value);
-    prefs.setStringList('ff_exerciseTesting',
-        _exerciseTesting.map((x) => x.serialize()).toList());
-  }
-
-  void removeFromExerciseTesting(ExerciseListStruct value) {
-    exerciseTesting.remove(value);
-    prefs.setStringList('ff_exerciseTesting',
-        _exerciseTesting.map((x) => x.serialize()).toList());
-  }
-
-  void removeAtIndexFromExerciseTesting(int index) {
-    exerciseTesting.removeAt(index);
-    prefs.setStringList('ff_exerciseTesting',
-        _exerciseTesting.map((x) => x.serialize()).toList());
-  }
-
-  void updateExerciseTestingAtIndex(
-    int index,
-    ExerciseListStruct Function(ExerciseListStruct) updateFn,
-  ) {
-    exerciseTesting[index] = updateFn(_exerciseTesting[index]);
-    prefs.setStringList('ff_exerciseTesting',
-        _exerciseTesting.map((x) => x.serialize()).toList());
-  }
-
-  void insertAtIndexInExerciseTesting(int index, ExerciseListStruct value) {
-    exerciseTesting.insert(index, value);
-    prefs.setStringList('ff_exerciseTesting',
-        _exerciseTesting.map((x) => x.serialize()).toList());
   }
 
   ExerciseListStruct _currentExercise = ExerciseListStruct.fromSerializableMap(

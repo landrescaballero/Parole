@@ -132,39 +132,7 @@ class _ConfettiWinnerPageWidgetState extends State<ConfettiWinnerPageWidget> {
                                       '{\"word\":\"NA\",\"exercise\":\"0\"}'));
                               FFAppState().currentMistakes = 0;
                               safeSetState(() {});
-                              await showDialog(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('Status'),
-                                    content: Text('Generando pares'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: Text('Ok'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
                               await actions.generatePairsAction();
-                              await showDialog(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('Status'),
-                                    content: Text('Pares han sido generados'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: Text('Ok'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
                               FFAppState().currentExercise =
                                   FFAppState().exercises.first;
                               safeSetState(() {});

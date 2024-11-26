@@ -37,8 +37,8 @@ List<ExerciseListStruct> generatePairs() {
         .words
         .where((palabra) => palabra.category == categoria)
         .every((palabra) =>
-            FFAppState().wordLearned.contains(palabra) ||
-            FFAppState().wordsLearning.contains(palabra));
+            FFAppState().wordLearned.any((w) => w.word == palabra.word) ||
+            FFAppState().wordsLearning.any((w) => w.word == palabra.word));
   }
 
   int categoriaMaximaDisponible = 1;
@@ -59,10 +59,13 @@ List<ExerciseListStruct> generatePairs() {
   if (palabrasDisponibles.isNotEmpty && FFAppState().wordsLearning.length < 3) {
     var nuevaPalabra =
         palabrasDisponibles[math.Random().nextInt(palabrasDisponibles.length)];
+
     ListWordStruct newWord =
         new ListWordStruct(word: nuevaPalabra.word, exercises: []);
-    ExerciseListStruct pair = new ExerciseListStruct(
-        word: nuevaPalabra.word, exercise: availableExercise(newWord));
+    int ejercicio = availableExercise(newWord);
+    newWord.exercises.add(ejercicio);
+    ExerciseListStruct pair =
+        new ExerciseListStruct(word: nuevaPalabra.word, exercise: ejercicio);
     pares.add(pair);
     FFAppState().wordsLearning.add(newWord);
     FFAppState().newWords.add(newWord.word);
@@ -70,6 +73,14 @@ List<ExerciseListStruct> generatePairs() {
 
   var aprendidaUsada = false;
   FFAppState().counter = FFAppState().counter++;
+  print("Categoria:");
+  print(categoriaMaximaDisponible);
+  print("\n");
+  print("palabras disponibles(${palabrasDisponibles.length}):");
+  for (var element in palabrasDisponibles) {
+    print(element.word);
+  }
+  print("\n");
   while (pares.length < maxPares) {
     if (FFAppState().wordsLearning.isNotEmpty) {
       var palabra = FFAppState().wordsLearning[
@@ -115,7 +126,6 @@ List<ExerciseListStruct> generatePairs() {
         palabraAprendida.exercises.add(ejercicio);
       }
     }
-    //DELETE BELOW IF IS NOT WORKING
     if (palabrasDisponibles.isEmpty && FFAppState().wordLearned.isNotEmpty) {
       List<ListWordStruct> palabrasMenosVistas = [];
       int minVistas = FFAppState()
@@ -137,7 +147,6 @@ List<ExerciseListStruct> generatePairs() {
       palabraAprendida.views++;
       palabraAprendida.exercises.add(ejercicio);
     }
-    //DELETE ABOVE IF IS NOT WORKING
     palabrasDisponibles = FFAppState()
         .words
         .where((palabra) =>
@@ -150,27 +159,53 @@ List<ExerciseListStruct> generatePairs() {
     FFAppState().exercises.add(par);
   });
   FFAppState().counter = FFAppState().counter++;
+  print("\n================================\n");
+  pares.forEach(print);
+  print("\n================================\n");
   return pares;
 
   /// MODIFY CODE ONLY ABOVE THIS LINE
 }
+// OLD WORKING VERSION
+// int availableExercise(ListWordStruct word) {
+//   List<int> ejerciciosPosibles =
+//       ejerciciosPorDificultad[word.currentDifficulty]!.toList();
+//   ejerciciosPosibles
+//       .removeWhere((ejercicio) => word.exercises.contains(ejercicio));
 
+//   if (ejerciciosPosibles.isEmpty) {
+//     if (word.currentDifficulty < 3) {
+//       word.currentDifficulty++;
+//       return availableExercise(word);
+//     } else {
+//       return -1;
+//     }
+//   }
+
+//   return ejerciciosPosibles[math.Random().nextInt(ejerciciosPosibles.length)];
+
+//   /// MODIFY CODE ONLY ABOVE THIS LINE
+// }
 int availableExercise(ListWordStruct word) {
+  // Obtén los ejercicios posibles para el nivel de dificultad actual
   List<int> ejerciciosPosibles =
-      ejerciciosPorDificultad[word.currentDifficulty]!.toList();
+      ejerciciosPorDificultad[word.currentDifficulty]!;
+
+  // Elimina los ejercicios que ya han sido asignados
   ejerciciosPosibles
       .removeWhere((ejercicio) => word.exercises.contains(ejercicio));
 
+  // Si no hay ejercicios posibles, y la palabra no ha alcanzado el límite de su dificultad, incrementa la dificultad
   if (ejerciciosPosibles.isEmpty) {
     if (word.currentDifficulty < 3) {
-      word.currentDifficulty++;
-      return availableExercise(word);
+      word.currentDifficulty++; // Sube la dificultad si es posible
+      return availableExercise(
+          word); // Vuelve a intentar con el nuevo nivel de dificultad
     } else {
-      return -1;
+      return -1; // Si ya no hay más ejercicios posibles y la dificultad es 3, no hay más ejercicios disponibles
     }
   }
 
+  // Si hay ejercicios disponibles, selecciona uno aleatorio
   return ejerciciosPosibles[math.Random().nextInt(ejerciciosPosibles.length)];
-
-  /// MODIFY CODE ONLY ABOVE THIS LINE
 }
