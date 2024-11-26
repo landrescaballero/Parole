@@ -80,7 +80,7 @@ class _ConfettiWinnerPageWidgetState extends State<ConfettiWinnerPageWidget> {
                           ),
                         ),
                         Text(
-                          'FELICIDADES LECCION COMPLETADA',
+                          'FELICIDADES, LECCIÓN COMPLETADA',
                           textAlign: TextAlign.center,
                           style: FlutterFlowTheme.of(context)
                               .headlineMedium
@@ -92,7 +92,7 @@ class _ConfettiWinnerPageWidgetState extends State<ConfettiWinnerPageWidget> {
                               ),
                         ),
                         Text(
-                          'Numero de ejercicios realizados:${FFAppState().attempts.toString()}',
+                          'Número de ejercicios realizados:${FFAppState().attempts.toString()}',
                           textAlign: TextAlign.center,
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
@@ -106,7 +106,7 @@ class _ConfettiWinnerPageWidgetState extends State<ConfettiWinnerPageWidget> {
                               ),
                         ),
                         Text(
-                          'Errores  de la leccion: ${FFAppState().sessionMistakes.toString()}',
+                          'Errores de la lección:${FFAppState().sessionMistakes.toString()}',
                           textAlign: TextAlign.center,
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
@@ -166,7 +166,7 @@ class _ConfettiWinnerPageWidgetState extends State<ConfettiWinnerPageWidget> {
                               context.pushNamed('MainMenu');
                             }
                           },
-                          text: 'Siguiente Leccion',
+                          text: 'Siguiente Lección',
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 60.0,

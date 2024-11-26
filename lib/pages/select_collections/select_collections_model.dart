@@ -1,5 +1,6 @@
 import '/backend/schema/structs/index.dart';
 import '/components/colllection_card/colllection_card_widget.dart';
+import '/components/new_word_card/new_word_card_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';

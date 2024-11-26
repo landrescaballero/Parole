@@ -58,12 +58,12 @@ class _CorrectOptionWidgetState extends State<CorrectOptionWidget> {
               Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Text(
-                  'Exitos',
+                  'Successo',
                   textAlign: TextAlign.justify,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'OpenDyslexic',
                         color: FlutterFlowTheme.of(context).primaryText,
-                        fontSize: 26.0,
+                        fontSize: 30.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
                         useGoogleFonts: false,
@@ -75,7 +75,7 @@ class _CorrectOptionWidgetState extends State<CorrectOptionWidget> {
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: Text(
-                    'Selecionaste la respuesta correcta',
+                    'La risposta è corretta',
                     textAlign: TextAlign.justify,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'OpenDyslexic',
@@ -94,7 +94,7 @@ class _CorrectOptionWidgetState extends State<CorrectOptionWidget> {
                   onPressed: () async {
                     Navigator.pop(context);
                   },
-                  text: 'Continuar',
+                  text: 'Continua',
                   options: FFButtonOptions(
                     height: 40.0,
                     padding:

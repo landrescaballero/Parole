@@ -1,4 +1,5 @@
 import '/backend/schema/structs/index.dart';
+import '/components/category/category_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -101,7 +102,7 @@ class _MainMenuWidgetState extends State<MainMenuWidget> {
                             .displayMedium
                             .override(
                               fontFamily: 'OpenDyslexic',
-                              color: FlutterFlowTheme.of(context).secondaryText,
+                              color: FlutterFlowTheme.of(context).tertiary,
                               fontSize: () {
                                 if (MediaQuery.sizeOf(context).width <
                                     kBreakpointSmall) {
@@ -128,102 +129,126 @@ class _MainMenuWidgetState extends State<MainMenuWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 0.0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                if (FFAppState().exercises.length == 0) {
-                                  FFAppState().sessionCounter =
-                                      FFAppState().sessionCounter + 1;
-                                  safeSetState(() {});
-                                  await actions.generatePairsAction();
-                                  FFAppState().wordLearned = FFAppState()
-                                      .wordLearned
-                                      .toList()
-                                      .cast<ListWordStruct>();
-                                  FFAppState().wordsLearning = FFAppState()
-                                      .wordsLearning
-                                      .toList()
-                                      .cast<ListWordStruct>();
-                                  safeSetState(() {});
-                                  FFAppState().currentExercise =
-                                      FFAppState().exercises.first;
-                                  safeSetState(() {});
-                                  FFAppState().removeAtIndexFromExercises(0);
-                                  safeSetState(() {});
-                                }
-                                if (FFAppState().currentExercise.exercise ==
-                                    1) {
-                                  context.pushNamed('GamePage1Translation');
-                                } else if (FFAppState()
-                                        .currentExercise
-                                        .exercise ==
-                                    2) {
-                                  context.pushNamed('GamePage2Image');
-                                } else if (FFAppState()
-                                        .currentExercise
-                                        .exercise ==
-                                    3) {
-                                  context.pushNamed('GamePage3Sound');
-                                } else if (FFAppState()
-                                        .currentExercise
-                                        .exercise ==
-                                    4) {
-                                  context.pushNamed('GamePage4MultipleImages');
-                                } else if (FFAppState()
-                                        .currentExercise
-                                        .exercise ==
-                                    5) {
-                                  context.pushNamed('GamePage5MultipleSounds');
-                                } else if (FFAppState()
-                                        .currentExercise
-                                        .exercise ==
-                                    6) {
-                                  context.pushNamed('gamePage6Syllables');
-                                } else if (FFAppState()
-                                        .currentExercise
-                                        .exercise ==
-                                    7) {
-                                  context.pushNamed('gamePage7Write');
-                                } else if (FFAppState()
-                                        .currentExercise
-                                        .exercise ==
-                                    8) {
-                                  context.pushNamed('gamePage8Usage');
-                                } else {
-                                  context.pushNamed('MainMenu');
-                                }
-                              },
-                              text: 'Empezar',
-                              icon: Icon(
-                                Icons.play_arrow_rounded,
-                                size: 30.0,
-                              ),
-                              options: FFButtonOptions(
-                                width: double.infinity,
-                                height: 56.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 0.0, 24.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).tertiary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleLarge
-                                    .override(
-                                      fontFamily: 'OpenDyslexic',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      fontSize: 30.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
-                                      useGoogleFonts: false,
-                                    ),
-                                elevation: 3.0,
-                                borderSide: BorderSide(
-                                  width: 2.0,
+                          Builder(
+                            builder: (context) => Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 0.0, 16.0, 0.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  if (FFAppState().exercises.length == 0) {
+                                    FFAppState().sessionCounter =
+                                        FFAppState().sessionCounter + 1;
+                                    safeSetState(() {});
+                                    await actions.generatePairsAction();
+                                    FFAppState().wordLearned = FFAppState()
+                                        .wordLearned
+                                        .toList()
+                                        .cast<ListWordStruct>();
+                                    FFAppState().wordsLearning = FFAppState()
+                                        .wordsLearning
+                                        .toList()
+                                        .cast<ListWordStruct>();
+                                    safeSetState(() {});
+                                    FFAppState().currentExercise =
+                                        FFAppState().exercises.first;
+                                    safeSetState(() {});
+                                    FFAppState().removeAtIndexFromExercises(0);
+                                    safeSetState(() {});
+                                    await showDialog(
+                                      context: context,
+                                      builder: (dialogContext) {
+                                        return Dialog(
+                                          elevation: 0,
+                                          insetPadding: EdgeInsets.zero,
+                                          backgroundColor: Colors.transparent,
+                                          alignment: AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
+                                          child: GestureDetector(
+                                            onTap: () =>
+                                                FocusScope.of(dialogContext)
+                                                    .unfocus(),
+                                            child: CategoryWidget(),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  }
+                                  if (FFAppState().currentExercise.exercise ==
+                                      1) {
+                                    context.pushNamed('GamePage1Translation');
+                                  } else if (FFAppState()
+                                          .currentExercise
+                                          .exercise ==
+                                      2) {
+                                    context.pushNamed('GamePage2Image');
+                                  } else if (FFAppState()
+                                          .currentExercise
+                                          .exercise ==
+                                      3) {
+                                    context.pushNamed('GamePage3Sound');
+                                  } else if (FFAppState()
+                                          .currentExercise
+                                          .exercise ==
+                                      4) {
+                                    context
+                                        .pushNamed('GamePage4MultipleImages');
+                                  } else if (FFAppState()
+                                          .currentExercise
+                                          .exercise ==
+                                      5) {
+                                    context
+                                        .pushNamed('GamePage5MultipleSounds');
+                                  } else if (FFAppState()
+                                          .currentExercise
+                                          .exercise ==
+                                      6) {
+                                    context.pushNamed('gamePage6Syllables');
+                                  } else if (FFAppState()
+                                          .currentExercise
+                                          .exercise ==
+                                      7) {
+                                    context.pushNamed('gamePage7Write');
+                                  } else if (FFAppState()
+                                          .currentExercise
+                                          .exercise ==
+                                      8) {
+                                    context.pushNamed('gamePage8Usage');
+                                  } else {
+                                    context.pushNamed('MainMenu');
+                                  }
+                                },
+                                text: 'Empezar',
+                                icon: Icon(
+                                  Icons.play_arrow_rounded,
+                                  size: 30.0,
                                 ),
-                                borderRadius: BorderRadius.circular(12.0),
+                                options: FFButtonOptions(
+                                  width: double.infinity,
+                                  height: 56.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 24.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).tertiary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleLarge
+                                      .override(
+                                        fontFamily: 'OpenDyslexic',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        fontSize: 30.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.bold,
+                                        useGoogleFonts: false,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
                               ),
                             ),
                           ),

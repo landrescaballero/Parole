@@ -58,7 +58,7 @@ class _SeeLaterWidgetState extends State<SeeLaterWidget> {
               Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Text(
-                  'Muchos Intentos',
+                  'Molti tentativi',
                   textAlign: TextAlign.justify,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'OpenDyslexic',
@@ -74,7 +74,7 @@ class _SeeLaterWidgetState extends State<SeeLaterWidget> {
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: Text(
-                    'El ejercicio se mostrara de nuevo luego',
+                    'L\'esercitazione inizierà più tardi ',
                     textAlign: TextAlign.justify,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'OpenDyslexic',

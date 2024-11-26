@@ -152,11 +152,9 @@ class _GamePage2ImageWidgetState extends State<GamePage2ImageWidget> {
                           'Seleciona  la palabra correspondiente a la imagen',
                           textAlign: TextAlign.center,
                           style: FlutterFlowTheme.of(context)
-                              .bodyMedium
+                              .headlineSmall
                               .override(
                                 fontFamily: 'OpenDyslexic',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 24.0,
                                 letterSpacing: 0.0,
                                 useGoogleFonts: false,
                               ),
@@ -408,15 +406,15 @@ class _GamePage2ImageWidgetState extends State<GamePage2ImageWidget> {
                                         24.0, 0.0, 24.0, 0.0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
                                           fontFamily: 'OpenDyslexic',
                                           color: FlutterFlowTheme.of(context)
                                               .tertiary,
-                                          fontSize: 25.0,
+                                          fontSize: 27.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
                                           useGoogleFonts: false,

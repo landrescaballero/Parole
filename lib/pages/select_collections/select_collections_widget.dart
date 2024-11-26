@@ -1,5 +1,6 @@
 import '/backend/schema/structs/index.dart';
 import '/components/colllection_card/colllection_card_widget.dart';
+import '/components/new_word_card/new_word_card_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -144,18 +145,52 @@ class _SelectCollectionsWidgetState extends State<SelectCollectionsWidget> {
                                             0
                                         ? 1.0
                                         : 0.5,
-                                    child: wrapWithModel(
-                                      model: _model.colllectionCardModels1
-                                          .getModel(
-                                        animalCardsIndex.toString(),
-                                        animalCardsIndex,
-                                      ),
-                                      updateCallback: () => safeSetState(() {}),
-                                      child: ColllectionCardWidget(
-                                        key: Key(
-                                          'Key7g7_${animalCardsIndex.toString()}',
+                                    child: Builder(
+                                      builder: (context) => InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child: GestureDetector(
+                                                  onTap: () => FocusScope.of(
+                                                          dialogContext)
+                                                      .unfocus(),
+                                                  child: NewWordCardWidget(
+                                                    wordInfo: animalCardsItem,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                        child: wrapWithModel(
+                                          model: _model.colllectionCardModels1
+                                              .getModel(
+                                            animalCardsIndex.toString(),
+                                            animalCardsIndex,
+                                          ),
+                                          updateCallback: () =>
+                                              safeSetState(() {}),
+                                          child: ColllectionCardWidget(
+                                            key: Key(
+                                              'Key7g7_${animalCardsIndex.toString()}',
+                                            ),
+                                            cardInfo: animalCardsItem,
+                                          ),
                                         ),
-                                        cardInfo: animalCardsItem,
                                       ),
                                     ),
                                   );
@@ -216,18 +251,52 @@ class _SelectCollectionsWidgetState extends State<SelectCollectionsWidget> {
                                             0
                                         ? 1.0
                                         : 0.5,
-                                    child: wrapWithModel(
-                                      model: _model.colllectionCardModels2
-                                          .getModel(
-                                        vehicleCardsIndex.toString(),
-                                        vehicleCardsIndex,
-                                      ),
-                                      updateCallback: () => safeSetState(() {}),
-                                      child: ColllectionCardWidget(
-                                        key: Key(
-                                          'Key6fb_${vehicleCardsIndex.toString()}',
+                                    child: Builder(
+                                      builder: (context) => InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child: GestureDetector(
+                                                  onTap: () => FocusScope.of(
+                                                          dialogContext)
+                                                      .unfocus(),
+                                                  child: NewWordCardWidget(
+                                                    wordInfo: vehicleCardsItem,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                        child: wrapWithModel(
+                                          model: _model.colllectionCardModels2
+                                              .getModel(
+                                            vehicleCardsIndex.toString(),
+                                            vehicleCardsIndex,
+                                          ),
+                                          updateCallback: () =>
+                                              safeSetState(() {}),
+                                          child: ColllectionCardWidget(
+                                            key: Key(
+                                              'Key6fb_${vehicleCardsIndex.toString()}',
+                                            ),
+                                            cardInfo: vehicleCardsItem,
+                                          ),
                                         ),
-                                        cardInfo: vehicleCardsItem,
                                       ),
                                     ),
                                   );
@@ -289,18 +358,52 @@ class _SelectCollectionsWidgetState extends State<SelectCollectionsWidget> {
                                             0
                                         ? 1.0
                                         : 0.5,
-                                    child: wrapWithModel(
-                                      model: _model.colllectionCardModels3
-                                          .getModel(
-                                        kitchenCardsIndex.toString(),
-                                        kitchenCardsIndex,
-                                      ),
-                                      updateCallback: () => safeSetState(() {}),
-                                      child: ColllectionCardWidget(
-                                        key: Key(
-                                          'Keyo3c_${kitchenCardsIndex.toString()}',
+                                    child: Builder(
+                                      builder: (context) => InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child: GestureDetector(
+                                                  onTap: () => FocusScope.of(
+                                                          dialogContext)
+                                                      .unfocus(),
+                                                  child: NewWordCardWidget(
+                                                    wordInfo: kitchenCardsItem,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                        child: wrapWithModel(
+                                          model: _model.colllectionCardModels3
+                                              .getModel(
+                                            kitchenCardsIndex.toString(),
+                                            kitchenCardsIndex,
+                                          ),
+                                          updateCallback: () =>
+                                              safeSetState(() {}),
+                                          child: ColllectionCardWidget(
+                                            key: Key(
+                                              'Keyo3c_${kitchenCardsIndex.toString()}',
+                                            ),
+                                            cardInfo: kitchenCardsItem,
+                                          ),
                                         ),
-                                        cardInfo: kitchenCardsItem,
                                       ),
                                     ),
                                   );

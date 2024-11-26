@@ -449,8 +449,7 @@ class _GamePage3SoundWidgetState extends State<GamePage3SoundWidget>
                                     24.0, 0.0, 24.0, 0.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
+                                color: FlutterFlowTheme.of(context).alternate,
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(

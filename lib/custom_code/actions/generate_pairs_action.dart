@@ -166,46 +166,45 @@ List<ExerciseListStruct> generatePairs() {
 
   /// MODIFY CODE ONLY ABOVE THIS LINE
 }
+
 // OLD WORKING VERSION
-// int availableExercise(ListWordStruct word) {
-//   List<int> ejerciciosPosibles =
-//       ejerciciosPorDificultad[word.currentDifficulty]!.toList();
-//   ejerciciosPosibles
-//       .removeWhere((ejercicio) => word.exercises.contains(ejercicio));
-
-//   if (ejerciciosPosibles.isEmpty) {
-//     if (word.currentDifficulty < 3) {
-//       word.currentDifficulty++;
-//       return availableExercise(word);
-//     } else {
-//       return -1;
-//     }
-//   }
-
-//   return ejerciciosPosibles[math.Random().nextInt(ejerciciosPosibles.length)];
-
-//   /// MODIFY CODE ONLY ABOVE THIS LINE
-// }
 int availableExercise(ListWordStruct word) {
-  // Obtén los ejercicios posibles para el nivel de dificultad actual
   List<int> ejerciciosPosibles =
-      ejerciciosPorDificultad[word.currentDifficulty]!;
-
-  // Elimina los ejercicios que ya han sido asignados
+      ejerciciosPorDificultad[word.currentDifficulty]!.toList();
   ejerciciosPosibles
       .removeWhere((ejercicio) => word.exercises.contains(ejercicio));
 
-  // Si no hay ejercicios posibles, y la palabra no ha alcanzado el límite de su dificultad, incrementa la dificultad
   if (ejerciciosPosibles.isEmpty) {
     if (word.currentDifficulty < 3) {
-      word.currentDifficulty++; // Sube la dificultad si es posible
-      return availableExercise(
-          word); // Vuelve a intentar con el nuevo nivel de dificultad
+      word.currentDifficulty++;
+      return availableExercise(word);
     } else {
-      return -1; // Si ya no hay más ejercicios posibles y la dificultad es 3, no hay más ejercicios disponibles
+      return -1;
     }
   }
 
-  // Si hay ejercicios disponibles, selecciona uno aleatorio
   return ejerciciosPosibles[math.Random().nextInt(ejerciciosPosibles.length)];
 }
+// int availableExercise(ListWordStruct word) {
+//   // Obtén los ejercicios posibles para el nivel de dificultad actual
+//   List<int> ejerciciosPosibles =
+//       ejerciciosPorDificultad[word.currentDifficulty]!;
+
+//   // Elimina los ejercicios que ya han sido asignados
+//   ejerciciosPosibles
+//       .removeWhere((ejercicio) => word.exercises.contains(ejercicio));
+
+//   // Si no hay ejercicios posibles, y la palabra no ha alcanzado el límite de su dificultad, incrementa la dificultad
+//   if (ejerciciosPosibles.isEmpty) {
+//     if (word.currentDifficulty < 3) {
+//       word.currentDifficulty++; // Sube la dificultad si es posible
+//       return availableExercise(
+//           word); // Vuelve a intentar con el nuevo nivel de dificultad
+//     } else {
+//       return -1; // Si ya no hay más ejercicios posibles y la dificultad es 3, no hay más ejercicios disponibles
+//     }
+//   }
+
+//   // Si hay ejercicios disponibles, selecciona uno aleatorio
+//   return ejerciciosPosibles[math.Random().nextInt(ejerciciosPosibles.length)];
+// }

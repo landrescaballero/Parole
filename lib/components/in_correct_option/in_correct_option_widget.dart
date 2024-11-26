@@ -58,7 +58,7 @@ class _InCorrectOptionWidgetState extends State<InCorrectOptionWidget> {
               Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Text(
-                  'Buen Intento',
+                  'Buon tentativo',
                   textAlign: TextAlign.justify,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'OpenDyslexic',
@@ -73,9 +73,9 @@ class _InCorrectOptionWidgetState extends State<InCorrectOptionWidget> {
               Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
                   child: Text(
-                    'Puedes volver a intentarlo',
+                    'È possibile riprovare',
                     textAlign: TextAlign.justify,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'OpenDyslexic',
@@ -94,7 +94,7 @@ class _InCorrectOptionWidgetState extends State<InCorrectOptionWidget> {
                   onPressed: () async {
                     Navigator.pop(context);
                   },
-                  text: 'Volver a intentarlo',
+                  text: 'Riprova',
                   options: FFButtonOptions(
                     height: 40.0,
                     padding:
@@ -104,7 +104,8 @@ class _InCorrectOptionWidgetState extends State<InCorrectOptionWidget> {
                     color: FlutterFlowTheme.of(context).tertiary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'OpenDyslexic',
-                          color: FlutterFlowTheme.of(context).primaryText,
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
                           useGoogleFonts: false,

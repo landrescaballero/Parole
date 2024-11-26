@@ -14,7 +14,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'game_page1_translation_model.dart';
@@ -157,28 +156,6 @@ class _GamePage1TranslationWidgetState extends State<GamePage1TranslationWidget>
                     context.pop();
                   },
                 ),
-                FlutterFlowIconButton(
-                  borderRadius: 8.0,
-                  buttonSize: 60.0,
-                  fillColor: FlutterFlowTheme.of(context).primary,
-                  icon: FaIcon(
-                    FontAwesomeIcons.solidLightbulb,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    size: 30.0,
-                  ),
-                  onPressed: () async {
-                    if (!_model.usedHint!) {
-                      _model.usedHint = true;
-                      safeSetState(() {});
-                      if (animationsMap['buttonOnActionTriggerAnimation'] !=
-                          null) {
-                        await animationsMap['buttonOnActionTriggerAnimation']!
-                            .controller
-                            .forward(from: 0.0);
-                      }
-                    }
-                  },
-                ),
               ],
             ),
             actions: [],
@@ -195,13 +172,27 @@ class _GamePage1TranslationWidgetState extends State<GamePage1TranslationWidget>
                     padding: EdgeInsets.all(24.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Align(
                           alignment: AlignmentDirectional(0.0, 0.0),
                           child: Text(
-                            'Selecciona la traducción correcta de: ${_model.currentWord?.translation}',
+                            'Selecciona la traducción correcta de:',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .headlineSmall
+                                .override(
+                                  fontFamily: 'OpenDyslexic',
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: false,
+                                ),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: Text(
+                            '${_model.currentWord?.translation}',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .displaySmall
@@ -209,7 +200,7 @@ class _GamePage1TranslationWidgetState extends State<GamePage1TranslationWidget>
                                   fontFamily: 'OpenDyslexic',
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
-                                  fontSize: 24.0,
+                                  fontSize: 32.0,
                                   letterSpacing: 0.0,
                                   useGoogleFonts: false,
                                 ),
