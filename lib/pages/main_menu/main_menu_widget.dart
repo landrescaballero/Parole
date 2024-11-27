@@ -80,7 +80,7 @@ class _MainMenuWidgetState extends State<MainMenuWidget> {
                 decoration: BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
                       padding: EdgeInsets.all(24.0),
@@ -226,7 +226,7 @@ class _MainMenuWidgetState extends State<MainMenuWidget> {
                                 ),
                                 options: FFButtonOptions(
                                   width: double.infinity,
-                                  height: 56.0,
+                                  height: 65.0,
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
@@ -262,7 +262,7 @@ class _MainMenuWidgetState extends State<MainMenuWidget> {
                               text: 'Colección',
                               options: FFButtonOptions(
                                 width: double.infinity,
-                                height: 56.0,
+                                height: 65.0,
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(

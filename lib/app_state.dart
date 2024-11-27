@@ -115,7 +115,16 @@ class FFAppState extends ChangeNotifier {
       _isDarkMode = prefs.getBool('ff_isDarkMode') ?? _isDarkMode;
     });
     _safeInit(() {
+      _isSoundOn = prefs.getBool('ff_isSoundOn') ?? _isSoundOn;
+    });
+    _safeInit(() {
+      _musicFile = prefs.getString('ff_musicFile') ?? _musicFile;
+    });
+    _safeInit(() {
       _category = prefs.getInt('ff_category') ?? _category;
+    });
+    _safeInit(() {
+      _listLearned = prefs.getStringList('ff_listLearned') ?? _listLearned;
     });
   }
 
@@ -454,16 +463,18 @@ class FFAppState extends ChangeNotifier {
   bool get isSoundOn => _isSoundOn;
   set isSoundOn(bool value) {
     _isSoundOn = value;
+    prefs.setBool('ff_isSoundOn', value);
   }
 
   String _musicFile =
-      'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/stracciatella-wdjp4d/assets/0s2gwb0d5i0x/audio.mp3';
+      'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/stracciatella-wdjp4d/assets/cqy6xcwlvtrl/zombies-lofi.mp3';
   String get musicFile => _musicFile;
   set musicFile(String value) {
     _musicFile = value;
+    prefs.setString('ff_musicFile', value);
   }
 
-  double _currentMusicVolume = 0.1;
+  double _currentMusicVolume = 0.5;
   double get currentMusicVolume => _currentMusicVolume;
   set currentMusicVolume(double value) {
     _currentMusicVolume = value;
@@ -492,6 +503,41 @@ class FFAppState extends ChangeNotifier {
   int get counter => _counter;
   set counter(int value) {
     _counter = value;
+  }
+
+  List<String> _listLearned = [];
+  List<String> get listLearned => _listLearned;
+  set listLearned(List<String> value) {
+    _listLearned = value;
+    prefs.setStringList('ff_listLearned', value);
+  }
+
+  void addToListLearned(String value) {
+    listLearned.add(value);
+    prefs.setStringList('ff_listLearned', _listLearned);
+  }
+
+  void removeFromListLearned(String value) {
+    listLearned.remove(value);
+    prefs.setStringList('ff_listLearned', _listLearned);
+  }
+
+  void removeAtIndexFromListLearned(int index) {
+    listLearned.removeAt(index);
+    prefs.setStringList('ff_listLearned', _listLearned);
+  }
+
+  void updateListLearnedAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    listLearned[index] = updateFn(_listLearned[index]);
+    prefs.setStringList('ff_listLearned', _listLearned);
+  }
+
+  void insertAtIndexInListLearned(int index, String value) {
+    listLearned.insert(index, value);
+    prefs.setStringList('ff_listLearned', _listLearned);
   }
 }
 

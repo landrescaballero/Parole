@@ -98,6 +98,7 @@ List<ExerciseListStruct> generatePairs() {
             ejerciciosPorDificultad.values.expand((e) => e).toList().length) {
           FFAppState().wordsLearning.remove(palabra);
           FFAppState().wordLearned.add(palabra);
+          FFAppState().listLearned.add(palabra.word);
         }
       }
     }

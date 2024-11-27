@@ -207,7 +207,7 @@ class _SelectCollectionsWidgetState extends State<SelectCollectionsWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 16.0, 0.0, 0.0),
                         child: Text(
-                          'Vehiculos',
+                          'Vehículos',
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(

@@ -56,45 +56,52 @@ class _CategoryWidgetState extends State<CategoryWidget> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Container(
-              width: MediaQuery.sizeOf(context).width * 0.9,
-              height: MediaQuery.sizeOf(context).height * 0.8,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).alternate,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(12.0),
-                  bottomRight: Radius.circular(12.0),
-                  topLeft: Radius.circular(12.0),
-                  topRight: Radius.circular(12.0),
-                ),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      'La categoria que estas Aprendiendo es: ${() {
-                        if (FFAppState().category == 1) {
-                          return 'Animales';
-                        } else if (FFAppState().category == 2) {
-                          return 'Vehiculos';
-                        } else if (FFAppState().category == 3) {
-                          return 'Utencilios de Cocina';
-                        } else {
-                          return '';
-                        }
-                      }()}',
-                      textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'OpenDyslexic',
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            fontSize: 17.0,
-                            letterSpacing: 0.0,
-                            useGoogleFonts: false,
-                          ),
-                    ),
-                  ],
+            Text(
+              'La categoría que estás aprendiendo es: ',
+              textAlign: TextAlign.center,
+              style: FlutterFlowTheme.of(context).labelLarge.override(
+                    fontFamily: 'OpenDyslexic',
+                    letterSpacing: 0.0,
+                    useGoogleFonts: false,
+                  ),
+            ),
+            Text(
+              '${() {
+                if (FFAppState().category == 1) {
+                  return 'Animales';
+                } else if (FFAppState().category == 2) {
+                  return 'Vehiculos';
+                } else if (FFAppState().category == 3) {
+                  return 'Utencilios de Cocina';
+                } else {
+                  return '';
+                }
+              }()}',
+              textAlign: TextAlign.center,
+              style: FlutterFlowTheme.of(context).headlineLarge.override(
+                    fontFamily: 'OpenDyslexic',
+                    letterSpacing: 0.0,
+                    fontWeight: FontWeight.bold,
+                    useGoogleFonts: false,
+                  ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(24.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.network(
+                  () {
+                    if (FFAppState().category == 1) {
+                      return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/stracciatella-wdjp4d/assets/0bv1bj0h7zlm/animales.png';
+                    } else if (FFAppState().category == 2) {
+                      return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/stracciatella-wdjp4d/assets/ycsan4yrzhba/vehiculos.png';
+                    } else if (FFAppState().category == 3) {
+                      return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/stracciatella-wdjp4d/assets/zz3au8hev2pj/Cocina.png';
+                    } else {
+                      return '';
+                    }
+                  }(),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

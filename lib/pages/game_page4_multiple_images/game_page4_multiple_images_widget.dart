@@ -42,6 +42,8 @@ class _GamePage4MultipleImagesWidgetState
           .toList()
           .first;
       safeSetState(() {});
+      FFAppState().attempts = FFAppState().attempts + 1;
+      safeSetState(() {});
       _model.listOptions = FFAppState()
           .words
           .where((e) =>
@@ -117,15 +119,27 @@ class _GamePage4MultipleImagesWidgetState
                   Align(
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: Text(
-                      'Seleciona la imagen que corresponda a la palabra ${_model.currentWord?.word}',
+                      'Selecciona la imagen que corresponda a la palabra ',
                       textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).displaySmall.override(
+                      style: FlutterFlowTheme.of(context).labelLarge.override(
                             fontFamily: 'OpenDyslexic',
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            fontSize: 25.0,
                             letterSpacing: 0.0,
                             useGoogleFonts: false,
                           ),
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: Text(
+                      '${_model.currentWord?.word}',
+                      textAlign: TextAlign.center,
+                      style:
+                          FlutterFlowTheme.of(context).headlineLarge.override(
+                                fontFamily: 'OpenDyslexic',
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.bold,
+                                useGoogleFonts: false,
+                              ),
                     ),
                   ),
                   Expanded(
@@ -153,9 +167,6 @@ class _GamePage4MultipleImagesWidgetState
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                FFAppState().attempts =
-                                    FFAppState().attempts + 1;
-                                safeSetState(() {});
                                 if (imageOptionsItem.word ==
                                     _model.currentWord?.word) {
                                   if (FFAppState().exercises.length > 0) {

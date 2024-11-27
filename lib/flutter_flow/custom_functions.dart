@@ -33,3 +33,15 @@ List<WordStruct> shuffleExerciseOptions(
 
   return randomItems;
 }
+
+bool? comparar(
+  String? texto,
+  String? palabra,
+) {
+  if (texto == null || palabra == null) {
+    return null; // Retorna null si algún texto es nulo
+  }
+
+  // Comparar ambas palabras en minúsculas
+  return texto.toLowerCase() == palabra.toLowerCase();
+}

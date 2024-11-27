@@ -48,6 +48,8 @@ class _GamePage1TranslationWidgetState extends State<GamePage1TranslationWidget>
           .toList()
           .first;
       safeSetState(() {});
+      FFAppState().attempts = FFAppState().attempts + 1;
+      safeSetState(() {});
       _model.listOptions = FFAppState()
           .words
           .where((e) =>
@@ -181,7 +183,7 @@ class _GamePage1TranslationWidgetState extends State<GamePage1TranslationWidget>
                             'Selecciona la traducción correcta de:',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
-                                .headlineSmall
+                                .labelLarge
                                 .override(
                                   fontFamily: 'OpenDyslexic',
                                   letterSpacing: 0.0,
@@ -195,13 +197,11 @@ class _GamePage1TranslationWidgetState extends State<GamePage1TranslationWidget>
                             '${_model.currentWord?.translation}',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
-                                .displaySmall
+                                .headlineLarge
                                 .override(
                                   fontFamily: 'OpenDyslexic',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  fontSize: 32.0,
                                   letterSpacing: 0.0,
+                                  fontWeight: FontWeight.bold,
                                   useGoogleFonts: false,
                                 ),
                           ),
@@ -225,9 +225,6 @@ class _GamePage1TranslationWidgetState extends State<GamePage1TranslationWidget>
                                         0.0, 4.0, 0.0, 8.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        FFAppState().attempts =
-                                            FFAppState().attempts + 1;
-                                        safeSetState(() {});
                                         if (optionsListItem ==
                                             _model.currentWord) {
                                           if (FFAppState().exercises.length >
@@ -455,7 +452,7 @@ class _GamePage1TranslationWidgetState extends State<GamePage1TranslationWidget>
                                       },
                                       text: optionsListItem.word,
                                       options: FFButtonOptions(
-                                        height: 80.0,
+                                        height: 65.0,
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
                                         iconPadding:

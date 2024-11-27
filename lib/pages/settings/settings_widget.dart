@@ -28,8 +28,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
     _model = createModel(context, () => SettingsModel());
 
     _model.musicSwitchValue = FFAppState().isSoundOn;
-    _model.darkModeSwitchValue = false;
-    _model.vibrationSwitchValue = false;
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -84,7 +82,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             padding: EdgeInsets.all(18.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Column(
                   mainAxisSize: MainAxisSize.max,
@@ -201,93 +199,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         ),
                       ],
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Modo Oscuro',
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context)
-                                .titleMedium
-                                .override(
-                                  fontFamily: 'OpenDyslexic',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: false,
-                                ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Align(
-                            alignment: AlignmentDirectional(1.0, 0.0),
-                            child: Switch.adaptive(
-                              value: _model.darkModeSwitchValue!,
-                              onChanged: (newValue) async {
-                                safeSetState(() =>
-                                    _model.darkModeSwitchValue = newValue!);
-                              },
-                              activeColor: FlutterFlowTheme.of(context).primary,
-                              activeTrackColor:
-                                  FlutterFlowTheme.of(context).tertiary,
-                              inactiveTrackColor:
-                                  FlutterFlowTheme.of(context).accent2,
-                              inactiveThumbColor:
-                                  FlutterFlowTheme.of(context).tertiary,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Vibración',
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context)
-                                .titleMedium
-                                .override(
-                                  fontFamily: 'OpenDyslexic',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: false,
-                                ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Align(
-                            alignment: AlignmentDirectional(1.0, 0.0),
-                            child: Switch.adaptive(
-                              value: _model.vibrationSwitchValue!,
-                              onChanged: (newValue) async {
-                                safeSetState(() =>
-                                    _model.vibrationSwitchValue = newValue!);
-                                if (newValue!) {
-                                  FFAppState().isHapticAllowed = true;
-                                  safeSetState(() {});
-                                } else {
-                                  FFAppState().isHapticAllowed = false;
-                                  safeSetState(() {});
-                                }
-                              },
-                              activeColor: FlutterFlowTheme.of(context).primary,
-                              activeTrackColor:
-                                  FlutterFlowTheme.of(context).tertiary,
-                              inactiveTrackColor:
-                                  FlutterFlowTheme.of(context).accent2,
-                              inactiveThumbColor:
-                                  FlutterFlowTheme.of(context).tertiary,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
                   ],
                 ),
                 FFButtonWidget(
@@ -308,7 +219,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   },
                   text: 'Resetear lecciones',
                   options: FFButtonOptions(
-                    height: 40.0,
+                    height: 60.0,
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     iconPadding:
@@ -317,6 +228,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'OpenDyslexic',
                           color: FlutterFlowTheme.of(context).tertiary,
+                          fontSize: 22.0,
                           letterSpacing: 0.0,
                           useGoogleFonts: false,
                         ),
@@ -324,7 +236,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
-              ],
+              ].divide(SizedBox(height: 20.0)),
             ),
           ),
         ),

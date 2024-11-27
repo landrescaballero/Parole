@@ -41,6 +41,8 @@ class _GamePage2ImageWidgetState extends State<GamePage2ImageWidget> {
           .toList()
           .first;
       safeSetState(() {});
+      FFAppState().attempts = FFAppState().attempts + 1;
+      safeSetState(() {});
       _model.listOptions = FFAppState()
           .words
           .where((e) =>
@@ -151,13 +153,12 @@ class _GamePage2ImageWidgetState extends State<GamePage2ImageWidget> {
                         child: Text(
                           'Seleciona  la palabra correspondiente a la imagen',
                           textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.of(context)
-                              .headlineSmall
-                              .override(
-                                fontFamily: 'OpenDyslexic',
-                                letterSpacing: 0.0,
-                                useGoogleFonts: false,
-                              ),
+                          style:
+                              FlutterFlowTheme.of(context).labelLarge.override(
+                                    fontFamily: 'OpenDyslexic',
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: false,
+                                  ),
                         ),
                       ),
                       Align(
@@ -189,9 +190,6 @@ class _GamePage2ImageWidgetState extends State<GamePage2ImageWidget> {
                                     0.0, 4.0, 0.0, 8.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    FFAppState().attempts =
-                                        FFAppState().attempts + 1;
-                                    safeSetState(() {});
                                     if (imageOptionsItem.word ==
                                         _model.currentWord?.word) {
                                       if (FFAppState().exercises.length > 0) {
@@ -401,7 +399,7 @@ class _GamePage2ImageWidgetState extends State<GamePage2ImageWidget> {
                                   },
                                   text: imageOptionsItem.word,
                                   options: FFButtonOptions(
-                                    height: 60.0,
+                                    height: 65.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(

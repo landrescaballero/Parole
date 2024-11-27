@@ -79,7 +79,7 @@ class _NewWordCardWidgetState extends State<NewWordCardWidget> {
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Align(
                       alignment: AlignmentDirectional(0.0, 0.0),
@@ -164,8 +164,8 @@ class _NewWordCardWidgetState extends State<NewWordCardWidget> {
                     Opacity(
                       opacity: 0.3,
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 30.0, 0.0, 10.0),
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                         child: Icon(
                           Icons.swipe,
                           color: FlutterFlowTheme.of(context).tertiary,

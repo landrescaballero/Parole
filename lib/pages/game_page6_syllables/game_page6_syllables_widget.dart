@@ -42,6 +42,8 @@ class _GamePage6SyllablesWidgetState extends State<GamePage6SyllablesWidget> {
           .toList()
           .first;
       safeSetState(() {});
+      FFAppState().attempts = FFAppState().attempts + 1;
+      safeSetState(() {});
     });
 
     _model.textController ??= TextEditingController();
@@ -107,12 +109,9 @@ class _GamePage6SyllablesWidgetState extends State<GamePage6SyllablesWidget> {
                     child: Text(
                       'Arma  la palabra correspondiente al sonido y la imagen',
                       textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      style: FlutterFlowTheme.of(context).labelLarge.override(
                             fontFamily: 'OpenDyslexic',
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            fontSize: 18.0,
                             letterSpacing: 0.0,
-                            fontWeight: FontWeight.bold,
                             useGoogleFonts: false,
                           ),
                     ),
@@ -326,8 +325,6 @@ class _GamePage6SyllablesWidgetState extends State<GamePage6SyllablesWidget> {
                           alignment: AlignmentDirectional(0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              FFAppState().attempts = FFAppState().attempts + 1;
-                              safeSetState(() {});
                               if (_model.currentWord?.word ==
                                   _model.textController.text) {
                                 if (FFAppState().exercises.length > 0) {

@@ -16,10 +16,6 @@ class SettingsModel extends FlutterFlowModel<SettingsWidget> {
   double? soundSliderValue;
   // State field(s) for musicSwitch widget.
   bool? musicSwitchValue;
-  // State field(s) for darkModeSwitch widget.
-  bool? darkModeSwitchValue;
-  // State field(s) for vibrationSwitch widget.
-  bool? vibrationSwitchValue;
 
   @override
   void initState(BuildContext context) {}

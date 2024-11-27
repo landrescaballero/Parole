@@ -185,7 +185,7 @@ class ThemeTypography extends Typography {
         fontFamily: 'OpenDyslexic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
-        fontSize: 32.0,
+        fontSize: 36.0,
       );
   String get headlineMediumFamily => 'OpenDyslexic';
   TextStyle get headlineMedium => TextStyle(
@@ -227,7 +227,7 @@ class ThemeTypography extends Typography {
         fontFamily: 'OpenDyslexic',
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
-        fontSize: 16.0,
+        fontSize: 20.0,
       );
   String get labelMediumFamily => 'OpenDyslexic';
   TextStyle get labelMedium => TextStyle(

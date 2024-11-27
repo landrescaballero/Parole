@@ -46,6 +46,8 @@ class _GamePage8UsageWidgetState extends State<GamePage8UsageWidget>
           .toList()
           .first;
       safeSetState(() {});
+      FFAppState().attempts = FFAppState().attempts + 1;
+      safeSetState(() {});
       _model.listOptions = FFAppState()
           .words
           .where((e) =>
@@ -139,27 +141,36 @@ class _GamePage8UsageWidgetState extends State<GamePage8UsageWidget>
                   padding: EdgeInsets.all(24.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      Align(
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: Text(
+                          'Completa la el ejemplo de uso con la palabra correcta',
+                          textAlign: TextAlign.center,
+                          style:
+                              FlutterFlowTheme.of(context).labelLarge.override(
+                                    fontFamily: 'OpenDyslexic',
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: false,
+                                  ),
+                        ),
+                      ),
                       Align(
                         alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 30.0),
                           child: Text(
-                            valueOrDefault<String>(
-                              _model.currentWord?.usageExercise,
-                              'Parola',
-                            ),
+                            '${_model.currentWord?.usageExercise}',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
-                                .displaySmall
+                                .headlineLarge
                                 .override(
                                   fontFamily: 'OpenDyslexic',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
                                   letterSpacing: 0.0,
+                                  fontWeight: FontWeight.bold,
                                   useGoogleFonts: false,
                                 ),
                           ),
@@ -182,9 +193,6 @@ class _GamePage8UsageWidgetState extends State<GamePage8UsageWidget>
                                     0.0, 4.0, 0.0, 8.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    FFAppState().attempts =
-                                        FFAppState().attempts + 1;
-                                    safeSetState(() {});
                                     if (usageOptionsItem.word ==
                                         _model.currentWord?.word) {
                                       if (FFAppState().exercises.length > 0) {
@@ -394,7 +402,7 @@ class _GamePage8UsageWidgetState extends State<GamePage8UsageWidget>
                                   },
                                   text: usageOptionsItem.word,
                                   options: FFButtonOptions(
-                                    height: 80.0,
+                                    height: 65.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(

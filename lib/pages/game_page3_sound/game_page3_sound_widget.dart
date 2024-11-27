@@ -48,6 +48,8 @@ class _GamePage3SoundWidgetState extends State<GamePage3SoundWidget>
           .toList()
           .first;
       safeSetState(() {});
+      FFAppState().attempts = FFAppState().attempts + 1;
+      safeSetState(() {});
       _model.listOptions = FFAppState()
           .words
           .where((e) =>
@@ -178,12 +180,9 @@ class _GamePage3SoundWidgetState extends State<GamePage3SoundWidget>
                     child: Text(
                       'Seleciona  la palabra correspondiente al sonido',
                       textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      style: FlutterFlowTheme.of(context).labelLarge.override(
                             fontFamily: 'OpenDyslexic',
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            fontSize: 22.0,
                             letterSpacing: 0.0,
-                            fontWeight: FontWeight.bold,
                             useGoogleFonts: false,
                           ),
                     ),
@@ -243,9 +242,6 @@ class _GamePage3SoundWidgetState extends State<GamePage3SoundWidget>
                                 0.0, 4.0, 0.0, 8.0),
                             child: FFButtonWidget(
                               onPressed: () async {
-                                FFAppState().attempts =
-                                    FFAppState().attempts + 1;
-                                safeSetState(() {});
                                 if (audioOptionsItem.word ==
                                     _model.currentWord?.word) {
                                   if (FFAppState().exercises.length > 0) {
@@ -444,7 +440,7 @@ class _GamePage3SoundWidgetState extends State<GamePage3SoundWidget>
                               },
                               text: audioOptionsItem.word,
                               options: FFButtonOptions(
-                                height: 60.0,
+                                height: 65.0,
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(

@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
@@ -44,6 +45,8 @@ class _GamePage7WriteWidgetState extends State<GamePage7WriteWidget> {
           .where((e) => e.word == FFAppState().currentExercise.word)
           .toList()
           .first;
+      safeSetState(() {});
+      FFAppState().attempts = FFAppState().attempts + 1;
       safeSetState(() {});
     });
 
@@ -112,19 +115,16 @@ class _GamePage7WriteWidgetState extends State<GamePage7WriteWidget> {
             padding: EdgeInsets.all(24.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Text(
                     'Escriba  la palabra correspondiente al sonido y la imagen',
                     textAlign: TextAlign.center,
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    style: FlutterFlowTheme.of(context).labelLarge.override(
                           fontFamily: 'OpenDyslexic',
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          fontSize: 19.0,
                           letterSpacing: 0.0,
-                          fontWeight: FontWeight.bold,
                           useGoogleFonts: false,
                         ),
                   ),
@@ -256,10 +256,9 @@ class _GamePage7WriteWidgetState extends State<GamePage7WriteWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            FFAppState().attempts = FFAppState().attempts + 1;
-                            safeSetState(() {});
-                            if (_model.currentWord?.word ==
-                                _model.textController.text) {
+                            if (functions.comparar(_model.currentWord?.word,
+                                    _model.textController.text) ==
+                                true) {
                               if (FFAppState().exercises.length > 0) {
                                 FFAppState().currentExercise =
                                     FFAppState().exercises.first;

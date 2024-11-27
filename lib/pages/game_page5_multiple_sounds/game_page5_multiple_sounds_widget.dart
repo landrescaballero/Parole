@@ -43,6 +43,8 @@ class _GamePage5MultipleSoundsWidgetState
           .toList()
           .first;
       safeSetState(() {});
+      FFAppState().attempts = FFAppState().attempts + 1;
+      safeSetState(() {});
       _model.listOptions = FFAppState()
           .words
           .where((e) =>
@@ -109,7 +111,7 @@ class _GamePage5MultipleSoundsWidgetState
           child: Align(
             alignment: AlignmentDirectional(0.0, 0.0),
             child: Padding(
-              padding: EdgeInsets.all(24.0),
+              padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -118,23 +120,33 @@ class _GamePage5MultipleSoundsWidgetState
                   Align(
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: Text(
-                      'Seleciona el audio que corresponda a la palabra: ${_model.currentWord?.word}',
+                      'Selecciona el audio que corresponda a la palabra: ',
                       textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).titleMedium.override(
+                      style: FlutterFlowTheme.of(context).labelLarge.override(
                             fontFamily: 'OpenDyslexic',
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            fontSize: 23.0,
                             letterSpacing: 0.0,
-                            fontWeight: FontWeight.bold,
                             useGoogleFonts: false,
                           ),
                     ),
                   ),
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: Text(
+                      '${_model.currentWord?.word}',
+                      textAlign: TextAlign.center,
+                      style:
+                          FlutterFlowTheme.of(context).headlineLarge.override(
+                                fontFamily: 'OpenDyslexic',
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.bold,
+                                useGoogleFonts: false,
+                              ),
+                    ),
+                  ),
                   Text(
                     'Presiona una vez el boton para escucharlo y manten presionado para selecionarlo ',
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    style: FlutterFlowTheme.of(context).labelMedium.override(
                           fontFamily: 'OpenDyslexic',
-                          color: FlutterFlowTheme.of(context).primaryText,
                           letterSpacing: 0.0,
                           useGoogleFonts: false,
                         ),
@@ -166,9 +178,6 @@ class _GamePage5MultipleSoundsWidgetState
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onLongPress: () async {
-                                  FFAppState().attempts =
-                                      FFAppState().attempts + 1;
-                                  safeSetState(() {});
                                   if (soundsOptionsItem.word ==
                                       _model.currentWord?.word) {
                                     if (FFAppState().exercises.length > 0) {
